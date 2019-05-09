@@ -39,10 +39,9 @@ namespace StarChart.Controllers
             {
                 return NotFound();
             }
-            foreach(var s in result)
-            {
-                s.Satellites = _context.CelestialObjects.Where(c => c.OrbitedObjectId == s.Id).ToList();
-            }
+
+            result.Satellites = _context.CelestialObjects.Where(c => c.OrbitedObjectId == result.Id).ToList();
+
 
             return Ok(result);
         }
